@@ -1,0 +1,29 @@
+﻿
+@{
+   
+    List<HelloWorldMVC.Models.Client> MonObjet = (List<HelloWorldMVC.Models.Client>)ViewData["clientele"];
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListClient</title>
+</head>
+<body>
+    <div>
+        <table>
+            <p>
+                @foreach (var client in MonObjet)
+            {
+                <tr>
+                    <td>@client.FirstName</td>
+                    <td>@client.LastName</td>
+                </tr>
+            }
+    </table>
+    </p>
+</div>
+</body>
+</html>

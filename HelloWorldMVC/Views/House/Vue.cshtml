@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+    HelloWorldMVC.Models.Client MonObjet = (HelloWorldMVC.Models.Client)ViewData["client"];
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Vue</title>
+</head>
+<body>
+    <h1>vue</h1>
+    <div> 
+        <p>YOOUUUUPPPPIIIII</p>
+        <p>@MonObjet.FirstName  @MonObjet.LastName est dans vue</p>
+    </div>
+</body>
+</html>

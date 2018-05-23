@@ -1,0 +1,100 @@
+﻿
+
+.titre {
+    margin-top: 5px;
+    display: inline-block;
+    vertical-align: top;
+    
+}
+
+#entete {
+    border: 1px solid;
+    border-color: green;
+    margin-bottom: 5px;
+    box-shadow: 7PX 5PX 1PX grey;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #d6ec73;
+    
+}
+
+#mainmenu,main,footer,#entete
+{
+    border: 1px solid;
+    border-color: green;
+    margin-bottom: 5px;
+    box-shadow: 7PX 5PX 1PX grey;
+    border-radius: 5px;
+    margin-bottom:10px;
+    
+}
+
+h1 {
+    text-shadow: 2px 3px 1px #ccc;
+    font-weight: bold;
+}
+
+h2 {
+    font-weight: bold;
+    font-size:32px;
+}
+#En-Haut
+{
+color:darkred;
+margin-left:10px;
+}
+
+#mainmenu li a {
+    border: 1px solid black;
+    text-align: center;
+    margin: 5px auto;
+    /*height: 30px;*/
+    padding: 0px;
+    width: 150px;
+    font-weight: bold;
+}
+
+#mainmenu li a:hover
+{
+    background-color:chartreuse;
+    color:black;
+}
+
+#mainmenu h2 
+{
+    font-size: 30px;
+}
+#mainmenu {
+    margin-right: 10px;
+    background-color: #d6ec73;
+}
+
+footer p {
+    /*margin-top:5px;*/
+    padding: 10px;
+   
+}
+
+main {
+    padding: 10px;
+    background-color: snow;
+    opacity:0.8;
+}
+
+footer 
+{
+    background-color: #d6ec73;
+}
+
+body
+{
+  background:url(../sea.jpg) no-repeat;
+
+}
+
+#logo {
+    width: 300px;
+    height: 200px;
+    margin-right: 30px;
+    opacity: 0.9;
+}

@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>_ViewStart</title>
+    <link rel="stylesheet" href="~/Content/CSS/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="~/Content/CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/CSS/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Content/CSS/Gestion_Clientele.css" />
+    <script src="~/Content/CSS/bootstrap.min.js"></script>
+    <script src="~/Content/CSS/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="row" id="entete">
+            <div class="col col-lg-12">
+                <img id="logo" src="~/Content/smile.jpg" class="img-fluid" />
+
+                <div class="titre">
+                    <h1>Gestion Clientèle</h1>
+                    <h2>Avec PHP ou ASP</h2>
+                </div>
+            </div>
+        </header>
+
+
+
+        <div class="row" id="navigation">
+            <nav class="col col-lg-2" id="mainmenu">
+                <h2>Navigation</h2>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="btn btn-default nav-link active" href="/Client">Acceuil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Client/liste">Listes des clients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Client/Create">Ajouter un client</a>
+                    </li>
+                </ul>
+                <h2>Produits</h2>
+                <ul class="nav nav-pills flex-column">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Product/Index">Listes des Produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Product/Create">Ajouter un Produit</a>
+                    </li>
+                </ul>
+            </nav>
+            <main class="col">
+                <h2>Accueil</h2>
+                <p class="text-info">
+                    Bienvenue dans la gestion clientèle.<br>
+                    Utilisez le menu à gauche pour naviguer dans le site.
+                </p>
+                <hr/>
+                @RenderBody()
+                <hr/>
+
+                <a class="btn btn-primary" href="http://www.google.fr">Je préfère aller sur Google</a>
+            </main>
+        </div>
+        <footer class="row">
+
+            <p><i class="fa fa-copyright" aria-hidden="true"></i> &nbsp; Copiright 2018 section DL </p>
+            <p>
+
+                <a href="#" id="En-Haut">
+                    &nbsp;En haut
+
+                </a>
+            </p>
+            <!-- &nbsp; espace insecable-->
+
+        </footer>
+    </div>
+</body>
+</html>
