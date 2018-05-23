@@ -49,9 +49,9 @@ namespace HelloWorldMVC.Controllers
             return RedirectToAction("Index");//redirection vers la vue index
         }
 
-        public ActionResult Details(Product _p)
+        public ActionResult Details(string id)
         {
-            Product p = Produits.FirstOrDefault(x=>(x.Reference == _p.Reference));
+            Product p = Produits.FirstOrDefault(x=>(x.Reference == id));
             /*le predicat au dessus recupere le produit dans la liste */
 
             if(p != default(Product))//si different du produit par defaut
