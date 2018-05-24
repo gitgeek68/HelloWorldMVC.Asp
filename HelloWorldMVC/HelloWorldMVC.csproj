@@ -96,9 +96,9 @@
     <Content Include="Content\CSS\Gestion_Clientele.css" />
     <Content Include="Content\CSS\jquery-3.3.1.min.js" />
     <Content Include="Content\Fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\paysage.jpg" />
-    <Content Include="Content\sea.jpg" />
-    <Content Include="Content\smile.jpg" />
+    <Content Include="Content\product\paysage.jpg" />
+    <Content Include="Content\product\sea.jpg" />
+    <Content Include="Content\product\smile.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>

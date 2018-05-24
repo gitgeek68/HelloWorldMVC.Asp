@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web;/*contient ttes les classes liés au Web*/
 using System.Web.Mvc;
 using HelloWorldMVC.Models;
+using System.IO;//contient les classe permettant d acceder aux systeme de fichiers
 
 namespace HelloWorldMVC.Controllers
 {
@@ -81,6 +82,25 @@ namespace HelloWorldMVC.Controllers
                 exist.ProductName = _p.ProductName;
                 exist.ProductDescription = _p.ProductDescription;
                 exist.ProductPrice = _p.ProductPrice;
+                //recupere le produit par reference et verifie s il exist
+
+                if(Request.Files.Count >0)
+                {
+                    var file = Request.Files[0];
+                    //permet d acceder à tous ls elements de type request
+                    //là on on reqiere le 1er fichier de la collection
+                    if(file != null && file.ContentLength > 0)
+                    {
+                        var fileName = exist.Reference + ".jpg";
+                        //si le produit exist,on lui ajoute l extention .jpg
+                        /*string path = Server.MapPath("~/Content/product/")+fileName;*/
+                        //ou la methode recommandée
+                        string path = Path.Combine("path,fileName");
+                        //using systeme.IO indispensable
+                        file.SaveAs(path);
+                    }
+
+                }
             }
             return RedirectToAction("Index");
         }
