@@ -58,7 +58,7 @@ namespace HelloWorldMVC.Models
 
         public string Getimage()
         {
-            return "/Content/product/" + Reference + ".jpg";
+            return "Content/product/" + Reference + ".jpg";
             /*retourne le chemin de fichiers ou stocker l image
              * et la renomme par sa referencepuis ajoute l extension .jpg*/
         }

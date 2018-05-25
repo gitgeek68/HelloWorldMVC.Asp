@@ -43,6 +43,7 @@
                 <!-- <input type="file" name="productImage" id="productImage"  ou en dessous en mode Helper/>-->
                 @Html.TextBox("productImage", "", htmlAttributes: new { @type = "file" })
                 <!--Ajoute un champs de type file permettant de parcourir les dossiers du pc-->
+                <img src="/@Model.GetThumbnail()"/>
             </div>
         </div>
 
