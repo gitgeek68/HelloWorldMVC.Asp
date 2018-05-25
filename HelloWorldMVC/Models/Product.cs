@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Web.WebPages;
 
 namespace HelloWorldMVC.Models
 {
@@ -53,6 +54,19 @@ namespace HelloWorldMVC.Models
         public Product(string _reference)//constructeur
         {
             this.Reference = _reference;
+        }
+
+        public string Getimage()
+        {
+            return "/Content/product/" + Reference + ".jpg";
+            /*retourne le chemin de fichiers ou stocker l image
+             * et la renomme par sa referencepuis ajoute l extension .jpg*/
+        }
+
+        public string GetThumbnail()
+        {
+            return "Content/product/" + Reference + "_th.jpg";
+            //chemin vignette
         }
     }
 }

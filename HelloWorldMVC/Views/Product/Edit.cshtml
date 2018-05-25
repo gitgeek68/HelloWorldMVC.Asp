@@ -1,6 +1,9 @@
 ﻿@model HelloWorldMVC.Models.Product
 
-@using (Html.BeginForm())//genere balise form
+@using (Html.BeginForm(null,null,FormMethod.Post,new { enctype = "multipart/form-data" }))
+    /*genere la balise form
+     * convertis en plusieurs parties binaire
+     */
 {
     @Html.AntiForgeryToken()//cle de securitée
 

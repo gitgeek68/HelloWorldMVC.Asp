@@ -5,6 +5,7 @@ using System.Web;/*contient ttes les classes liés au Web*/
 using System.Web.Mvc;
 using HelloWorldMVC.Models;
 using System.IO;//contient les classe permettant d acceder aux systeme de fichiers
+using System.Web.Helpers;//utiliser webimage
 
 namespace HelloWorldMVC.Controllers
 {
@@ -86,18 +87,39 @@ namespace HelloWorldMVC.Controllers
 
                 if(Request.Files.Count >0)
                 {
-                    var file = Request.Files[0];
+                    HttpPostedFileBase file = Request.Files[0];
                     //permet d acceder à tous ls elements de type request
-                    //là on on reqiere le 1er fichier de la collection
+                    //là on on requiere le 1er fichier de la collection
                     if(file != null && file.ContentLength > 0)
                     {
+                        /*
                         var fileName = exist.Reference + ".jpg";
                         //si le produit exist,on lui ajoute l extention .jpg
                         /*string path = Server.MapPath("~/Content/product/")+fileName;*/
-                        //ou la methode recommandée
-                        string path = Path.Combine("path,fileName");
+                        //ou la methode recommandée*/
+
+                        string path = Server.MapPath("/");
+                        //chemin vers la racine du serveur web
+
+                        string path_img = Path.Combine(path, exist.Getimage());
+                        //construction du chemin vers l image
+
+                        string path_th = Path.Combine(path,exist.GetThumbnail());
+                        //construction du chemin vers la vignette
+
                         //using systeme.IO indispensable
-                        file.SaveAs(path);
+
+                        file.SaveAs(path_img);
+                        //sauvegarde de l 'image originale
+
+
+                        WebImage img = new WebImage(file.InputStream);
+                        /*Conversion de l'image originale en webimage*/
+                        img.Resize(width: 320, height: 180);
+                        /*Redimensionne l image*/
+
+                        img.Save(path_th);
+                        /*sauvegarde la vignette*/
                     }
 
                 }
