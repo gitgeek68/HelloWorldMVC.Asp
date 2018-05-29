@@ -65,6 +65,7 @@ namespace HelloWorldMVC.Models
         public string Getimage()
         {
             if (File.Exists(HttpContext.Current.Server.MapPath("Content/product/" + Reference + ".jpg")))
+                //version complete
             {
                 return "Content/product/" + Reference + ".jpg";
                 /*retourne le chemin de fichiers ou stocker l image
@@ -82,7 +83,8 @@ namespace HelloWorldMVC.Models
 
         public string GetThumbnail()
         {
-            if (File.Exists(HttpContext.Current.Server.MapPath("~" + GetThumbnailPath())))
+            if (File.Exists(HttpContext.Current.Server.MapPath("~/" + GetThumbnailPath())))
+                //version avec la method
             {
                 return GetThumbnailPath();
                 //chemin vignette
