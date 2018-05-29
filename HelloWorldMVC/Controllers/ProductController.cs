@@ -101,10 +101,10 @@ namespace HelloWorldMVC.Controllers
                         string path = Server.MapPath("/");
                         //chemin vers la racine du serveur web
 
-                        string path_img = Path.Combine(path, exist.Getimage());
+                        string path_img = Path.Combine(path, exist.GetImagePath());
                         //construction du chemin vers l image
 
-                        string path_th = Path.Combine(path,exist.GetThumbnail());
+                        string path_th = Path.Combine(path,exist.GetThumbnailPath());
                         //construction du chemin vers la vignette
 
                         //using systeme.IO indispensable

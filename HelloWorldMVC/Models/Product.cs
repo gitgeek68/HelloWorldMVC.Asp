@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Web.WebPages;
+using System.IO;
 
 namespace HelloWorldMVC.Models
 {
@@ -20,9 +21,9 @@ namespace HelloWorldMVC.Models
 
         [Required(ErrorMessage = "Le nom du produit est obligatoire")]
         //ajoute l attribut reuis
-        [StringLength (64,ErrorMessage= "La réference est trop longue")]
+        [StringLength(64, ErrorMessage = "La réference est trop longue")]
         //condition de validation
-        [ Display(Name =  "Nom du produit")]
+        [Display(Name = "Nom du produit")]
         //change l affichage du label dans la vue
         public string ProductName//accesseur
         {
@@ -37,8 +38,8 @@ namespace HelloWorldMVC.Models
             get;
             set;
         }
-  
-     
+
+
         [Display(Name = "Description du produit")]
         public string ProductDescription//accesseur
         {
@@ -56,17 +57,37 @@ namespace HelloWorldMVC.Models
             this.Reference = _reference;
         }
 
-        public string Getimage()
+        public string GetImagePath()
         {
             return "Content/product/" + Reference + ".jpg";
-            /*retourne le chemin de fichiers ou stocker l image
-             * et la renomme par sa referencepuis ajoute l extension .jpg*/
+        }
+
+        public string Getimage()
+        {
+            if (File.Exists(HttpContext.Current.Server.MapPath("Content/product/" + Reference + ".jpg")))
+            {
+                return "Content/product/" + Reference + ".jpg";
+                /*retourne le chemin de fichiers ou stocker l image
+            * et la renomme par sa referencepuis ajoute l extension .jpg*/
+            }
+            return "Content/no-image.jpg";
+
+           
+        }
+
+        public string GetThumbnailPath()
+        {
+            return "Content/product/" + Reference + "_th.jpg";
         }
 
         public string GetThumbnail()
         {
-            return "Content/product/" + Reference + "_th.jpg";
-            //chemin vignette
+            if (File.Exists(HttpContext.Current.Server.MapPath("~" + GetThumbnailPath())))
+            {
+                return GetThumbnailPath();
+                //chemin vignette
+            }
+            return "Content/no-image.jpg";
         }
     }
 }

@@ -9,6 +9,10 @@
         <th>
             @Html.DisplayNameFor(model => model.Reference)
         </th>
+
+        <th>
+            Image
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
@@ -23,26 +27,34 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reference)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reference)
+        </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductDescription)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Reference }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Reference}) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Reference })
-            </td>
-        </tr>
+        <td>
+            <img src="/@item.GetThumbnail()" alt="Image" class="image-thumbnail" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDescription)
+        </td>
+        <td>
+            <a class="fa fa-eye"  aria-hidden="true" href="/Product/Edit/@item.Reference"/a>
+            @Html.ActionLink(" ", "Edit", new { id = item.Reference }, new { @class = "fa fa-pencil-square-o" })
+            @*version image*@
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.Reference })*@
+            @*version texte*@|
+            @Html.ActionLink(" ", "Details", new { id = item.Reference }, new { @class = "fa fa-eye" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.Reference }, new { @class = "fa fa-eraser" })
+        </td>
+    </tr>
     }
 
 </table>

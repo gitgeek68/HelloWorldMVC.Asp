@@ -98,3 +98,9 @@ body
     margin-right: 30px;
     opacity: 0.9;
 }
+
+.image-thumbnail 
+{
+    width: 70px;
+    height:50px;
+}
