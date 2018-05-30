@@ -51,5 +51,54 @@ namespace HelloWorldMVC.Models
             //sauvegarde
         }
         #endregion client
+        #region Update Product
+        public void UpdateProduct(Product p)
+        {
+            Product exist = db.Products.FirstOrDefault(x =>(x.Id == p.Id));
+            //va rechercher dans la liste de produits,puis compare les identidifiants pour retrouver le meme
+            if(exist != default(Product))//preferer default à "null" pour les cas ou le retour est 0 ou autre
+            {
+                exist.ProductDescription = p.ProductDescription;
+                exist.ProductName = p.ProductName;
+                exist.ProductPrice = p.ProductPrice;
+            }
+        }
+        #endregion
+
+        public Product GetProduct(int id)
+        {
+          return db.Products.FirstOrDefault(x => (x.Id == id));
+        }
+
+        public void DeleteProduct(int id)
+        {
+            Product exist = db.Products.FirstOrDefault(x => (x.Id == id));
+            if (exist != default(Product))
+            {
+                db.Products.Remove(exist);
+            }
+
+
+        }
+        #region GetProducts Predicate
+        public List<Product> GetProducts(Predicate<Product> predicate)
+        {
+
+            List<Product> result = new List<Product>();
+            //cree une liste de resultats
+            foreach(Product p in db.Products)
+                //pour chaque produit dans la base de donnée product
+            {
+                if(predicate(p))
+                    //si le predicat correspond au produit demandé(p)
+                {
+                    result.Add(p);
+                    //la liste ajoute le produit a result
+                }
+            }
+            return result;
+            //retourne la liste result
+        }
+        #endregion
     }
 }

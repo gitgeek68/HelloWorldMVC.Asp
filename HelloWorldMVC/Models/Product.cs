@@ -5,11 +5,20 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Web.WebPages;
 using System.IO;
+using System.Data.Entity;
 
 namespace HelloWorldMVC.Models
 {
     public class Product
+
+    
     {
+
+        public int Id { get; set; }
+      //  public int ProductId { get; set; } equivalent au dessus
+      // pour qu entity framework fonctionne, il faut ,un champ id de type int, ou une classe ex:"ProductId" de type int
+
+
         [Required(ErrorMessage = "La référence est requise")]
         [StringLength(8, ErrorMessage = "La réference est trop longue")]
         [Display(Name = "Référence produit")]

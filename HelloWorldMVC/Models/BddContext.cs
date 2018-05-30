@@ -23,7 +23,8 @@ namespace HelloWorldMVC.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Database.SetInitializer<BddContext>(null);
+            //Database.SetInitializer<BddContext>(null);
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BddContext>());
             base.OnModelCreating(modelBuilder);
         }
     }
