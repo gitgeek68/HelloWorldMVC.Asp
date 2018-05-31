@@ -49,6 +49,25 @@ namespace HelloWorld_Tests
                 Assert.AreEqual("DE Lafontaine", clients[0].LastName);
 
 
+                Client Clienttest = dal.GetClient(1);
+                //cree un client qui est egale au 1er client de la liste
+
+                Clienttest.FirstName = "JeanJean";
+                //modifie la valeur initial de firstname par JeanJean
+
+                Assert.AreEqual("JeanJean", clients[0].FirstName, "le nom ne correspond pas");
+
+
+
+                dal.DeleteClient(0);
+
+                clients = dal.GetClients();
+                //recupere toute la liste de clients
+
+                Assert.AreEqual(1, clients.Count);
+                //verifie  si la liste est egale 1
+
+                string query = "TRUNCATE TABLE " + "Clients";
             }
         }
     }

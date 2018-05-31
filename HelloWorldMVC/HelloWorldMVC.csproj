@@ -95,6 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SQLQuery1.sql" />
     <Content Include="Content\CSS\bootstrap-reboot.min.css" />
     <Content Include="Content\CSS\bootstrap.min.css" />
     <Content Include="Content\CSS\bootstrap.min.js" />
@@ -155,7 +156,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>

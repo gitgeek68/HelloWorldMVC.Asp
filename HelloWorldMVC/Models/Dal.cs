@@ -19,6 +19,12 @@ namespace HelloWorldMVC.Models
             db.Dispose();
         }
 
+        public void TruncatClients()
+        {
+            db.Database.ExecuteSqlCommand("TRUNCATE TABLE Clients");
+            //efface la table sql Clients
+        }
+
 
 
         #region client
@@ -60,6 +66,7 @@ namespace HelloWorldMVC.Models
             if (exist != default(Client))
             {
                 db.Clients.Remove(exist);
+                db.SaveChanges();
             }
         }
 
@@ -94,6 +101,7 @@ namespace HelloWorldMVC.Models
                 {
                     result.Add(c);
                     //la liste ajoute le Client a result
+                    db.SaveChanges();
                 }
             }
             return result;
@@ -154,6 +162,7 @@ namespace HelloWorldMVC.Models
             if (exist != default(Product))
             {
                 db.Products.Remove(exist);
+                db.SaveChanges();
             }
 
 
@@ -175,6 +184,7 @@ namespace HelloWorldMVC.Models
                 {
                     result.Add(p);
                     //la liste ajoute le produit a result
+                    db.SaveChanges();
                 }
             }
             return result;
