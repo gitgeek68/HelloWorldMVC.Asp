@@ -14,6 +14,9 @@ namespace HelloWorld_Tests
             using (Dal dal = new Dal())
                 //cree un object disponible qua dans le bloc du using
             {
+
+                dal.TruncatProducts();
+
                 dal.AddProduct(new Product { Reference = "Gp20", ProductName = "Google Play", ProductDescription = "abonnement", ProductPrice = 20 });
                 //ajoute un produit à product
 
@@ -25,7 +28,7 @@ namespace HelloWorld_Tests
                 //Assert.AreEqual(2, products.Count);
                 Assert.AreEqual("Gp20", products[0].Reference);
                 Assert.AreEqual("Google Play", products[0].ProductName);
-
+               
 
             }
         }
@@ -67,7 +70,9 @@ namespace HelloWorld_Tests
                 Assert.AreEqual(1, clients.Count);
                 //verifie  si la liste est egale 1
 
-                string query = "TRUNCATE TABLE " + "Clients";
+                dal.TruncatProducts();
+
+
             }
         }
     }

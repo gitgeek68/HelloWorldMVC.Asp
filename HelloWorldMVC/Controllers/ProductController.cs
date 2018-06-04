@@ -12,6 +12,12 @@ namespace HelloWorldMVC.Controllers
 
     public class ProductController : Controller
     {
+        Dal dal;
+
+        public ProductController()
+            {
+            dal = new Dal();
+            }
 
         // GET: Product
         public ActionResult Index()
@@ -46,14 +52,19 @@ namespace HelloWorldMVC.Controllers
             }
            if(isCorrect==false)
             {
-                Produits.Add(p);
+                //Produits.Add(p);
+                dal.AddProduct(p);
+               
             }
             return RedirectToAction("Index");//redirection vers la vue index
         }
 
+       
+
         public ActionResult Details(string id)
         {
-            Product p = Produits.FirstOrDefault(x=>(x.Reference == id));
+           Product p = dal.GetProduct(id);
+            //Product p = Produits.FirstOrDefault(x=>(x.Reference == id));
             /*le predicat au dessus recupere le produit dans la liste */
 
             if(p != default(Product))//si different du produit par defaut

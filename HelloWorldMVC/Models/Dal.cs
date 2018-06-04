@@ -17,12 +17,14 @@ namespace HelloWorldMVC.Models
         public void Dispose()
         {
             db.Dispose();
+            //libere les ressources,c# l utilise tout seul,on l implemente simplement
         }
 
         public void TruncatClients()
         {
             db.Database.ExecuteSqlCommand("TRUNCATE TABLE Clients");
             //efface la table sql Clients
+            db.SaveChanges();   
         }
 
 
@@ -81,6 +83,7 @@ namespace HelloWorldMVC.Models
             {
                 exist.LastName = c.LastName;
                 exist.FirstName = c.LastName;
+                db.SaveChanges();
 
             }
         }
@@ -122,6 +125,11 @@ namespace HelloWorldMVC.Models
         }
         #endregion
 
+
+        public Product GetProduct(string reference)
+        {
+           return  db.Products.FirstOrDefault(x => (x.Reference == reference));
+        }
         #region AddProduct
         public void AddProduct(Product p)
         {
@@ -143,6 +151,7 @@ namespace HelloWorldMVC.Models
                 exist.ProductDescription = p.ProductDescription;
                 exist.ProductName = p.ProductName;
                 exist.ProductPrice = p.ProductPrice;
+                db.SaveChanges();
             }
         }
         #endregion
@@ -192,6 +201,13 @@ namespace HelloWorldMVC.Models
         }
         #endregion
 
+
+        public void TruncatProducts()
+        {
+            db.Database.ExecuteSqlCommand("TRUNCATE TABLE Products;");
+            //efface la table sql Clients
+            db.SaveChanges();
+        }
         #endregion product
     }
 }
