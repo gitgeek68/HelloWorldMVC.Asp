@@ -22,7 +22,7 @@ namespace HelloWorldMVC.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            return View(Produits);
+            return View(dal.GetProducts());
         }
 
         static public List<Product> Produits = new List<Product>()
@@ -76,7 +76,9 @@ namespace HelloWorldMVC.Controllers
 
         public ActionResult Edit(string id )
         {
-            Product p = Produits.FirstOrDefault(x => (x.Reference == id));
+            Product p = dal.GetProduct(id);
+            //retourne un produit par reference
+            //Product p = Produits.FirstOrDefault(x => (x.Reference == id));
 
             if (p != default(Product))//si different du produit par defaut
             {
@@ -88,12 +90,14 @@ namespace HelloWorldMVC.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(Product _p)
         {
-            Product exist = Produits.FirstOrDefault(x => (x.Reference == _p.Reference));
-            if(exist != default(Product))
+            Product exist = dal.GetProduct(_p.Reference);
+
+            //Product exist = Produits.FirstOrDefault(x => (x.Reference == _p.Reference));
+            if (exist != default(Product))
             {
-                exist.ProductName = _p.ProductName;
-                exist.ProductDescription = _p.ProductDescription;
-                exist.ProductPrice = _p.ProductPrice;
+                _p.Id = exist.Id;
+                dal.UpdateProduct(_p);
+              
                 //recupere le produit par reference et verifie s il exist
 
                 if(Request.Files.Count >0)
@@ -140,7 +144,8 @@ namespace HelloWorldMVC.Controllers
 
         public ActionResult Delete(string id )
         {
-            Product p = Produits.FirstOrDefault(x => (x.Reference == id));
+            Product p = dal.GetProduct(id);
+            //    Product p = Produits.FirstOrDefault(x => (x.Reference == id));
 
             if (p != default(Product))//si different du produit par defaut
             {
@@ -154,14 +159,10 @@ namespace HelloWorldMVC.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
 
-            Product p = Produits.FirstOrDefault(x => (x.Reference == id));
+            Product p= dal.GetProduct(id);
             if (p != default(Product))
             {
-                if (Produits.Remove(p))
-                {
-                    /* Classes.Loader.SaveClients();*/
-                }
-
+                dal.DeleteProduct(p.Id);
             }
             return RedirectToAction("Index");
         }

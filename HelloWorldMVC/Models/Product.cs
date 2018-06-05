@@ -73,8 +73,8 @@ namespace HelloWorldMVC.Models
 
         public string Getimage()
         {
-            if (File.Exists(HttpContext.Current.Server.MapPath("Content/product/" + Reference + ".jpg")))
-                //version complete
+            string path = HttpContext.Current.Server.MapPath("/Content/product/" + Reference + ".jpg");
+            if (File.Exists(path))//version complete
             {
                 return "Content/product/" + Reference + ".jpg";
                 /*retourne le chemin de fichiers ou stocker l image
